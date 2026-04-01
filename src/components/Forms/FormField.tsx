@@ -14,7 +14,7 @@ export const TextInput = (props: ITextInputProps) => {
       {
         labelText && <label htmlFor={field.name} >{labelText} {required && <span aria-label="required" >*</span>}</label>
       }
-      <input {...field} id={field.name} {...rest} />
+      <input {...field} id={field.name} {...rest}  />
       {error && (<span style={{color: 'red'}}> {error} </span> )}
     </div>
   )

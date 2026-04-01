@@ -4,18 +4,19 @@ import { TextInput } from './FormField'
 type BaseControllerProps = {
   name: string
   labelText?: React.ReactNode
-  required?: boolean
+  required?: boolean,
+  placeholder?: string,
+  className?: string,
 }
 
 export const InputController = (props: BaseControllerProps) => {
   const { name, labelText, required, ...rest } = props
   const { control } = useFormContext()
-  console.log({control})
   
   return (
     <Controller
       name={name}
-      // control={control}
+      control={control}
       render={({ field, fieldState: { error } }) => (
         <TextInput
           field={field}

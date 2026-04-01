@@ -3,6 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { schema, defaultValues, type IFormInput } from '../../Schemas/TestSchema'
 import { InputController } from './InputController'
 import { SelectController } from './SelectController'
+import styles from './form.module.css'
 
 export const TestForm = () => {
   const methods = useForm<IFormInput>({
@@ -27,6 +28,8 @@ export const TestForm = () => {
           name="firstName"
           labelText="First Name"
           required
+          placeholder='Mateo'
+          className={styles.input}
         />
         <InputController 
           name="lastName"
