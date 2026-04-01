@@ -1,36 +1,40 @@
 import { useForm, FormProvider } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { schema, defaultValues, type IFormInput } from '../../Schemas/TestSchema'
-import { FormController } from './FormController'
+import { InputController } from './InputController'
 import { SelectController } from './SelectController'
 
 export const TestForm = () => {
   const methods = useForm<IFormInput>({
     resolver: yupResolver(schema),
-    defaultValues
+    defaultValues,
+    mode: 'onSubmit'
   })
   const {handleSubmit} = methods
-
   const onSubmit = (data: IFormInput) => {
-    console.log(data)
+    console.log('Est')
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        alert(JSON.stringify(data, null, 2))
+        resolve(true)
+      }, 2000)
+    })
   }
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <FormController 
+        <InputController 
           name="firstName"
           labelText="First Name"
           required
         />
-        <FormController 
-          as="input"
+        <InputController 
           name="lastName"
           labelText="Last Name"
           required
         />
-        <FormController 
+        <InputController 
           name="age"
-          as={'select'}
           labelText="Age"
           required
         />

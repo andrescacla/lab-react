@@ -1,35 +1,27 @@
 import {Controller, useFormContext} from 'react-hook-form'
-import { SelectInput } from './SelectInput'
+import { TextInput } from './FormField'
 
-export interface SelectOption {
-  value: string;
-  label: string;
-}
-
-type BaseControllerPRops = {
+type BaseControllerProps = {
   name: string
   labelText?: React.ReactNode
-  required?: boolean,
-  option: SelectOption[]
+  required?: boolean
 }
 
-
-
-export const SelectController = (props: BaseControllerPRops) => {
-  const {  name, labelText, required, option, ...rest } = props
+export const InputController = (props: BaseControllerProps) => {
+  const { name, labelText, required, ...rest } = props
   const { control } = useFormContext()
+  console.log({control})
   
   return (
     <Controller
       name={name}
-      control={control}
+      // control={control}
       render={({ field, fieldState: { error } }) => (
-        <SelectInput
+        <TextInput
           field={field}
           error={error?.message}
           labelText={labelText}
           required={required} 
-          options={option}
           {...rest}  
         />
       )}

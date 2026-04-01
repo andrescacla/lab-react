@@ -1,22 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-interface IFieldProps {
-  as?: React.ElementType,
+interface ITextInputProps {
   field: React.InputHTMLAttributes<HTMLInputElement>,
   error?: string,
   labelText?: React.ReactNode,
   required?: boolean,
   [key: string]: any
 }
-export const FormField = (props: IFieldProps) => {
-  const { as: Component = "input", field, error, labelText, required, ...rest } = props
+export const TextInput = (props: ITextInputProps) => {
+  const { field, error, labelText, required, ...rest } = props
   return (
     <div >
       {
         labelText && <label htmlFor={field.name} >{labelText} {required && <span aria-label="required" >*</span>}</label>
       }
-      <Component id={field.name} value={field.value} onChange={field.onChange} onBlur={field.onBlur} {...rest} />
-      {error && (<span> {error} </span> )}
+      <input {...field} id={field.name} {...rest} />
+      {error && (<span style={{color: 'red'}}> {error} </span> )}
     </div>
   )
 }
