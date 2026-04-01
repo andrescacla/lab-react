@@ -2,6 +2,7 @@
 import './App.css'
 import { Block } from './components/Block';
 import { Buttons } from './components/Buttons';
+import { TestForm } from './components/Forms/TestForm';
 import { useAppContext } from './context/TodoContext'
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <section id="center">
         {state.isVisible && <Block />}
         <Buttons />
+        <TestForm />
       </section>
     </>
   )

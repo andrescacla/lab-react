@@ -1,0 +1,289 @@
+.selectGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.selectWrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.labelWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--axa-gray-800);
+  line-height: 1.4;
+  font-family: var(
+    --font-family-axa,
+    "Source Sans Pro",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif
+  );
+}
+
+.required {
+  color: var(--axa-gray-800);
+  margin-left: 2px;
+}
+
+.tooltipContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.tooltipButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.tooltipButton:focus {
+  outline: 2px solid #00008f;
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+
+.tooltipIcon {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.tooltipContent {
+  position: absolute;
+  background-color: #EEF0FF;
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0px 4px 8px 0px #00000033;
+  z-index: 1000;
+  max-width: 300px;
+  min-width: 200px;
+  font-size: 14px;
+  color: #00008F;
+  line-height: 1.5;
+  font-family: var(
+    --font-family-axa,
+    "Source Sans Pro",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif
+  );
+  white-space: normal;
+  word-wrap: break-word;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.tooltipHidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.tooltipVisible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltipItem {
+  margin-bottom: 12px;
+}
+
+.tooltipItem:last-child {
+  margin-bottom: 0;
+}
+
+.tooltipTitle {
+  font-weight: 600;
+  color: #00008F;
+}
+
+.tooltipDescription {
+  font-weight: 400;
+  color: #00008F;
+}
+
+/* Position: Right (default) */
+.tooltipContent--right {
+  top: 50%;
+  left: calc(100% + 12px);
+  transform: translateY(-50%);
+}
+
+.tooltipContent--right::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -6px;
+  transform: translateY(-50%) rotate(45deg);
+  width: 12px;
+  height: 12px;
+  background-color: #EEF0FF;
+  box-shadow: -2px 2px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+/* Position: Bottom (fallback when no space on right) */
+.tooltipContent--bottom {
+  top: calc(100% + 12px);
+  right: 0;
+  transform: none;
+}
+
+.tooltipContent--bottom::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: 10px;
+  width: 12px;
+  height: 12px;
+  background-color: #EEF0FF;
+  transform: rotate(45deg);
+  box-shadow: -2px -2px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+/* Position: Top (fallback when no space below) */
+.tooltipContent--top {
+  bottom: calc(100% + 12px);
+  right: 0;
+  transform: none;
+}
+
+.tooltipContent--top::before {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  right: 10px;
+  width: 12px;
+  height: 12px;
+  background-color: #EEF0FF;
+  transform: rotate(45deg);
+  box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+.select {
+  width: 100%;
+  padding: 12px 40px 12px 16px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #343c3d;
+  font-family: var(
+    --font-family-axa,
+    "Source Sans Pro",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif
+  );
+  cursor: pointer;
+  transition: all 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.select:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.selectIcon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  width: 10px;
+  height: auto;
+}
+
+.select option {
+  color: #343c3d;
+  background: #ffffff;
+  font-weight: 400;
+}
+
+.select option:first-child {
+  color: #757575;
+}
+
+/* When a value is selected, change text color to dark */
+.select:not([value=""]) {
+  color: #343c3d;
+}
+
+.select:valid:not([value=""]) {
+  color: #343c3d;
+}
+
+/* Error state */
+.selectError {
+  border-color: #dc2626;
+  background-color: #fef2f2;
+}
+
+.selectError:focus {
+  outline: 2px solid #dc2626;
+  outline-offset: 2px;
+}
+
+.errorMessage {
+  display: block;
+  font-size: 0.875rem;
+  color: #dc2626;
+  margin-top: 4px;
+  line-height: 1.25rem;
+  font-family: var(
+    --font-family-axa,
+    "Source Sans Pro",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif
+  );
+}
+
+/* Mobile responsive - ensure full width */
+@media (max-width: 576px) {
+  .selectGroup,
+  .selectWrapper,
+  .select {
+    width: 100%;
+  }
+}
